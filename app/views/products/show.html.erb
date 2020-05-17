@@ -30,10 +30,15 @@
   <%= @product.tittle %>
 </p>
 
+
 <p>
   <strong>Price:</strong>
   <%= @product.price %>
 </p>
 
-<%= link_to 'Edit', edit_product_path(@product) %> |
+<div style="width:400px; height:auto">
+<%= link_to image_tag(@product.image, style: 'width:100%') %>
+</div>
+
+<%= link_to 'Edit', edit_product_path(@product) %>
 <%= link_to 'Back', products_path %>

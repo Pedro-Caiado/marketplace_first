@@ -30,6 +30,8 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 gem 'simple_form'
 gem 'devise'
+gem 'mini_magick', '~> 4.8'
+gem "rolify"
 
 
 group :development, :test do
