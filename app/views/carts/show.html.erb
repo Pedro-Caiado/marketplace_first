@@ -1,0 +1,38 @@
+<table>
+  <thead>
+    <tr>
+      <th>Brand</th>
+      <th>Model</th>
+      <th>Description</th>
+      <th>Condition</th>
+      <th>Finish</th>
+      <th>Title</th>
+      <th>Price</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @cart.products.each do |product| %>
+      <tr>
+        <td><%= product.brand %></td>
+        <td><%= product.model %></td>
+        <td><%= product.description %></td>
+        <td><%= product.condition %></td>
+        <td><%= product.finish %></td>
+        <td><%= product.title %></td>
+        <td><%= product.price %></td>
+        <td><%= link_to 'Show', product %></td>
+        <% unless @cart.finished? %>
+          <td><%= link_to 'Remove', remove_carts_path(product) %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<h1>Price <%= @cart.products.sum(&:price) %></h1>
+<% unless @cart.finished? %>
+  <%= link_to 'Complete', finish_carts_path(@cart) %>
+<% end %>

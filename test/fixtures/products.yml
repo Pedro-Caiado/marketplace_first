@@ -6,7 +6,6 @@ one:
   description: MyText
   condition: MyString
   finish: MyString
-  tittle: MyString
   price: 9.99
 
 two:
@@ -15,5 +14,4 @@ two:
   description: MyText
   condition: MyString
   finish: MyString
-  tittle: MyString
   price: 9.99

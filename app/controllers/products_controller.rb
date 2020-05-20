@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
-  
+
 
   # GET /products
   # GET /products.json
@@ -16,44 +16,40 @@ class ProductsController < ApplicationController
 
   # GET /products/new
   def new
-    @product = Product.new
+    if user_signed_in?
+      @product = current_user.products.new
+    else
+      redirect_to new_user_session_path
+    end
   end
 
   # GET /products/1/edit
   def edit
   end
 
-  # POST /products
-  # POST /products.json
   def create
-    @product = current_user.products.build(product_params)
-  
+    @product = current_user.products.create(product_params)
 
-  def product_params
-    params.require(:product).permit(:name, :image)
-  end
-    respond_to do |format|
-      if @product.save
-        format.html { redirect_to @product, notice: 'Product was successfully created.' }
-        format.json { render :show, status: :created, location: @product }
-      else
-        format.html { render :new }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
-      end
+    if @product.save
+      flash[:notice] = 'Produto Criado com Sucesso'
+      redirect_to products_path
+    else
+      flash[:notice] = 'Não foi possível cadastrar produto'
+      render 'new'
     end
   end
 
   # PATCH/PUT /products/1
   # PATCH/PUT /products/1.json
   def update
-    respond_to do |format|
-      if @product.update(product_params)
-        format.html { redirect_to @product, notice: 'Product was successfully updated.' }
-        format.json { render :show, status: :ok, location: @product }
-      else
-        format.html { render :edit }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
-      end
+    @product.update(product_params)
+
+    if @product.save
+      flash[:notice] = 'Produto Editado com Sucesso'
+      redirect_to products_path
+    else
+      flash[:notice] = 'Não foi possível editar produto'
+      render 'edit'
     end
   end
 
@@ -68,15 +64,13 @@ class ProductsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_product
-      @product = Product.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_product
+    @product = Product.find(params[:id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def product_params
-      params.require(:product).permit(:brand, :model, :description, :condition, :finish, :tittle, :price, :image)
-    end
+  # Only allow a list of trusted parameters through.
+  def product_params
+    params.require(:product).permit(:brand, :model, :description, :condition, :finish, :title, :price, :image)
+  end
 end
-
- 

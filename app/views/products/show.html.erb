@@ -26,8 +26,8 @@
 </p>
 
 <p>
-  <strong>Tittle:</strong>
-  <%= @product.tittle %>
+  <strong>title:</strong>
+  <%= @product.title %>
 </p>
 
 
@@ -37,7 +37,9 @@
 </p>
 
 <div style="width:400px; height:auto">
-<%= link_to image_tag(@product.image, style: 'width:100%') %>
+  <% if @product.image.present? %>
+    <%= link_to image_tag(@product.image, style: 'width:100%') %>
+  <% end %>
 </div>
 
 <%= link_to 'Edit', edit_product_path(@product) %>

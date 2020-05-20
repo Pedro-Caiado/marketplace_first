@@ -1,0 +1,25 @@
+.navbar-menu {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    margin: 0;
+    background: rgba(77, 76, 76, 0.733);
+}
+
+.navbar-menu .navbar-logo a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 23px;
+}
+
+.navbar-content {
+    margin: 0 10px;
+    font-size: 18px;
+    color: #fff;
+}
+
+.navbar-content a {
+    margin: 0 10px;
+    color: #fff;
+    text-decoration: none;
+}

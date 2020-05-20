@@ -1,13 +1,15 @@
 class Product < ApplicationRecord
     has_one_attached :image
-end
+    belongs_to :user
 
-private
+    validates :title, presence: true
+    validate :image_content_type
 
-def not_referenced_by_any_line_item
-    unless line_items.empty?
-        errors.add(:base, 'line item present')
-        throw :abort
+    private
+
+    def image_content_type
+        if image.attached? && !image.content_type.in?(%w(image/png image/jpeg))
+            errors.add(:document, 'Must be a PNG or a JPEG file')
+        end
     end
 end
-

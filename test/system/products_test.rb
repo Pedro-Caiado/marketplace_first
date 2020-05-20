@@ -20,7 +20,7 @@ class ProductsTest < ApplicationSystemTestCase
     fill_in "Finish", with: @product.finish
     fill_in "Model", with: @product.model
     fill_in "Price", with: @product.price
-    fill_in "Tittle", with: @product.tittle
+    fill_in "Title", with: @product.title
     click_on "Create Product"
 
     assert_text "Product was successfully created"
@@ -37,7 +37,7 @@ class ProductsTest < ApplicationSystemTestCase
     fill_in "Finish", with: @product.finish
     fill_in "Model", with: @product.model
     fill_in "Price", with: @product.price
-    fill_in "Tittle", with: @product.tittle
+    fill_in "Title", with: @product.title
     click_on "Update Product"
 
     assert_text "Product was successfully updated"
