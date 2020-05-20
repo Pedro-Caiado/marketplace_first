@@ -4,7 +4,7 @@
   </div>
 
   <div class="navbar-content">
-    <% if current_user.carts.opened.present?  %>
+    <% if user_signed_in? && current_user.carts.opened.present?  %>
       Products:
       <%= current_user.carts.opened.last.products.count %>
       <%= link_to 'Finish Cart', cart_path(current_user.carts.opened.last)%>
