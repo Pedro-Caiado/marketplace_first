@@ -7,9 +7,9 @@
     <% if user_signed_in? && current_user.carts.opened.present?  %>
       Products:
       <%= current_user.carts.opened.last.products.count %>
-      <%= link_to 'Finish Cart', cart_path(current_user.carts.opened.last)%>
+      <%= link_to 'Check Out', cart_path(current_user.carts.opened.last)%>
     <% end %>
-    <%= link_to 'Carts', carts_path %>
+    <%= link_to 'Cart Status', carts_path %>
     <% if current_user %>
       <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
     <% else %>

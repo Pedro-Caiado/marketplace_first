@@ -1,10 +1,10 @@
-<table>
+<table class="table table-hover">
   <thead>
     <tr>
-      <th>Id</th>
-      <th>Status</th>
-      <th>Value</th>
-      <th>Finished_at</th>
+      <th>ID</th>
+      <th>CART STATUS</th>
+      <th>PRICE</th>
+      <th>TIME PURCHASE</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -15,13 +15,13 @@
         <td><%= cart.id %></td>
         <td><%= cart.status %></td>
         <% if cart.finished? %>
-          <td>$ <%= cart.value %></td>
+          <td>$<%= cart.value %></td>
           <td><%= cart.updated_at %></td>
         <% else %>
           <td></td>
           <td></td>
         <% end %>
-        <td><%= link_to 'Show', cart %></td>
+        <td><%= link_to 'Show', cart, :class => "btn btn-secondary" %></td>
       </tr>
     <% end %>
   </tbody>

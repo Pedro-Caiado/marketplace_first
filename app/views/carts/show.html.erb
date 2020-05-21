@@ -1,4 +1,4 @@
-<table>
+<table class="table table-hover">
   <thead>
     <tr>
       <th>Brand</th>
@@ -21,10 +21,10 @@
         <td><%= product.condition %></td>
         <td><%= product.finish %></td>
         <td><%= product.title %></td>
-        <td><%= product.price %></td>
-        <td><%= link_to 'Show', product %></td>
+        <td>$<%= product.price %></td>
+        <td><%= link_to 'Show', product, :class => "btn btn-secondary" %></td>
         <% unless @cart.finished? %>
-          <td><%= link_to 'Remove', remove_carts_path(product) %></td>
+          <td><%= link_to 'Remove', remove_carts_path(product), :class => "btn btn-secondary"%></td>
         <% end %>
       </tr>
     <% end %>
@@ -32,7 +32,7 @@
 </table>
 
 
-<h1>Price <%= @cart.products.sum(&:price) %></h1>
+<h1>Price $ <%= @cart.products.sum(&:price) %></h1>
 <% unless @cart.finished? %>
-  <%= link_to 'Complete', finish_carts_path(@cart) %>
+ <%= link_to 'Check Out', finish_carts_path(@cart), :class => "btn btn-secondary" %>
 <% end %>

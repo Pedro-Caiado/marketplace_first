@@ -31,7 +31,7 @@ class CartsController < ApplicationController
     @cart = Cart.find(params['format'])
 
     if @cart.finish!
-      flash[:notice] = 'Compra Finalizada'
+      flash[:notice] = 'Sucessfull Purchase'
       redirect_to root_path
     else
       redirect_to cart_path(current_user.carts.opened.last)

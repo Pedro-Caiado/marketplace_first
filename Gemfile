@@ -32,6 +32,7 @@ gem 'simple_form'
 gem 'devise'
 gem 'mini_magick', '~> 4.8'
 gem "rolify"
+gem 'bootstrap'
 
 
 group :development, :test do

@@ -31,10 +31,10 @@ class ProductsController < ApplicationController
     @product = current_user.products.create(product_params)
 
     if @product.save
-      flash[:notice] = 'Produto Criado com Sucesso'
+      flash[:notice] = 'Product was successfully created.'
       redirect_to products_path
     else
-      flash[:notice] = 'Não foi possível cadastrar produto'
+      flash[:notice] = 'Try it again'
       render 'new'
     end
   end
@@ -45,10 +45,10 @@ class ProductsController < ApplicationController
     @product.update(product_params)
 
     if @product.save
-      flash[:notice] = 'Produto Editado com Sucesso'
+      flash[:notice] = 'Product was successfully Edited'
       redirect_to products_path
     else
-      flash[:notice] = 'Não foi possível editar produto'
+      flash[:notice] = 'Try it again'
       render 'edit'
     end
   end

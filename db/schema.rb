@@ -52,6 +52,16 @@ ActiveRecord::Schema.define(version: 2020_05_19_212909) do
     t.index ["product_id", "cart_id"], name: "index_carts_products_on_product_id_and_cart_id"
   end
 
+  create_table "items", force: :cascade do |t|
+    t.bigint "product_id", null: false
+    t.bigint "cart_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "quantity", default: 1
+    t.index ["cart_id"], name: "index_items_on_cart_id"
+    t.index ["product_id"], name: "index_items_on_product_id"
+  end
+
   create_table "products", force: :cascade do |t|
     t.string "brand"
     t.string "model"
