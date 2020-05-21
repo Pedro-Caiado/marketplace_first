@@ -5,7 +5,6 @@
 
   <div class="navbar-content">
     <% if user_signed_in? && current_user.carts.opened.present?  %>
-      Products:
       <%= current_user.carts.opened.last.products.count %>
       <%= link_to 'Check Out', cart_path(current_user.carts.opened.last)%>
     <% end %>
